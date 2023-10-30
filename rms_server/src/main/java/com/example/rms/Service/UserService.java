@@ -5,6 +5,7 @@ import com.example.rms.Entity.Auth.User;
 import com.example.rms.Entity.Auth.UserDTO;
 import com.example.rms.Repo.RoleRepo;
 import com.example.rms.Repo.UserRepo;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -66,26 +67,36 @@ public class UserService {
     }
 
 
-    public User registerNewUser(UserDTO userDTO) {
-        User user=UserDTOtoUser(userDTO);
-        Role role = roleDao.findByRoleName("Waiter");
-        System.out.println(user);
-        Set<Role> userRoles = new HashSet<>();
-        userRoles.add(role);
-        user.setRole(userRoles);
-        user.setPassword(getEncodedPassword(user.getPassword()));
-        System.out.println(user);
-        return userDao.save(user);
+    public UserDTO registerNewUser(String userDTO) throws  Exception{
+//        User user=UserDTOtoUser(userDTO);
+//        System.out.println(user);
+//        return userDao.save(user);
+        ObjectMapper ob=new ObjectMapper();
+        UserDTO userDTO1=ob.readValue(userDTO,UserDTO.class);
+        User user=UserDTOtoUser(userDTO1);
+        return userDTO1;
     }
 
     private User UserDTOtoUser(UserDTO userDTO){
-        User user=new User(userDTO.getUserName(), userDTO.getEmail(), userDTO.getPassword());
+        System.out.println(userDTO.getRole());
+        User user=new User();
+        user.setUserName(userDTO.getUserName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(getEncodedPassword(userDTO.getPassword()));
+        Set<Role> roles=new HashSet<>();
+        for(String i: userDTO.getRole()){
+
+            roles.add(roleDao.findByRoleName(i));
+        }
+        user.setRole(roles);
+        System.out.println(user.toString());
+        userDao.save(user);
         return user;
     }
-    private UserDTO UsertoUserDTO(User user){
-        UserDTO userDTO=new UserDTO( user.getUserName(), user.getEmail(), user.getPassword());
-        return userDTO;
-    }
+//    private UserDTO UsertoUserDTO(User user){
+//        UserDTO userDTO=new UserDTO( user.getUserName(), user.getEmail(), user.getPassword());
+//        return userDTO;
+//    }
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }

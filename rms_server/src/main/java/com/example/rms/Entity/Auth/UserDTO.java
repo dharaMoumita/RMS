@@ -2,14 +2,21 @@ package com.example.rms.Entity.Auth;
 
 public class UserDTO {
     private int id;
+
     private String userName;
     private String email;
     private String password;
+    private String[] role;
 
-    public UserDTO(String userName, String email, String password) {
+    public UserDTO() {
+    }
+
+    public UserDTO(int id, String userName, String email, String password, String[] role) {
+        this.id = id;
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -42,5 +49,13 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String[] getRole() {
+        return role;
+    }
+
+    public void setRole(String[] role) {
+        this.role = role;
     }
 }

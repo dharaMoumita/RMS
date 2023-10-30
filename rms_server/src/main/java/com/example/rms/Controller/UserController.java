@@ -19,8 +19,7 @@ public class UserController {
         userService.initRoleAndUser();
     }
     @PostMapping("/registerNewUser")
-    public User registerNewUser(@RequestBody UserDTO user) {
-        System.out.println(user);
+    public UserDTO registerNewUser(@RequestBody String user)throws Exception {
         return userService.registerNewUser(user);
     }
 
