@@ -67,14 +67,14 @@ public class UserService {
     }
 
 
-    public UserDTO registerNewUser(String userDTO) throws  Exception{
+    public User registerNewUser(String userDTO) throws  Exception{
 //        User user=UserDTOtoUser(userDTO);
 //        System.out.println(user);
 //        return userDao.save(user);
         ObjectMapper ob=new ObjectMapper();
         UserDTO userDTO1=ob.readValue(userDTO,UserDTO.class);
         User user=UserDTOtoUser(userDTO1);
-        return userDTO1;
+        return user;
     }
 
     private User UserDTOtoUser(UserDTO userDTO){

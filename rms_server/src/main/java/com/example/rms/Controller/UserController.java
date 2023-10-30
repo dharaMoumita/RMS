@@ -19,7 +19,7 @@ public class UserController {
         userService.initRoleAndUser();
     }
     @PostMapping("/registerNewUser")
-    public UserDTO registerNewUser(@RequestBody String user)throws Exception {
+    public User registerNewUser(@RequestBody String user)throws Exception {
         return userService.registerNewUser(user);
     }
 
