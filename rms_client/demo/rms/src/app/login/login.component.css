@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+/* @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 * {
 	box-sizing: border-box;
@@ -186,4 +186,15 @@ body {
 .register_link:hover{
 	border-bottom: 2px blue solid;
 	cursor: pointer;
-}
+} */
+
+.gradient-custom {
+	/* fallback for old browsers */
+	background: #fff;
+	
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, rgb(248, 245, 250), rgb(119, 106, 231));
+	
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, rgba(248, 245, 250,1), rgb(91, 78, 126))
+	}
