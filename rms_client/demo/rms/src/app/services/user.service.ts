@@ -22,6 +22,8 @@ export class UserService {
     });
   }
   public register(registerData){
+    console.log(registerData);
+    
     return this.httpclient.post(this.PATH_OF_API+'/registerNewUser',registerData,{
       headers:this.requestHeader,
     });

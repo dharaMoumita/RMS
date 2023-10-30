@@ -1,34 +1,98 @@
 <div class="container">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login"  #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="User name" ngModel
-                    name="username">
-				</div>
-                <div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder=" Email" ngModel
-                    name="email">
-				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" class="login__input" placeholder="Password" ngModel
-                    name="password">
-				</div>
-				<button class="button login__submit">
-					<span class="button__text">Register</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
-			</form>
-			
+  <div class="screen">
+    <div class="screen__content">
+      <form
+        class="login"
+        #registerForm="ngForm"
+        (ngSubmit)="register(registerForm)"
+      >
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input
+            type="text"
+            class="login__input"
+            placeholder="User name"
+            ngModel
+            required
+            minlength="4"
+            #name="ngModel"
+            name="username"
+          />
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="alert text-dark fw-bold"
+          >
+            <div *ngIf="name.errors?.['required']">Name is required.</div>
+            <div *ngIf="name.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input
+            type="email"
+            class="login__input"
+            placeholder=" Email"
+            required
+            ngModel
+            #email="ngModel"
+            [email]="true"
+            name="email"
+          />
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert text-dark fw-bold"
+          >
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+          </div>
+        </div>
+
+        <div class="login__field">
+          <i class="login__icon fas fa-lock"></i>
+          <input
+            type="password"
+            class="login__input"
+            placeholder="Password"
+            ngModel
+            required
+            #password="ngModel"
+            name="password"
+            minlength="6"
+          />
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="alert text-dark fw-bold"
+          >
+            <div *ngIf="password.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </div>
+          </div>
+        </div>
+		<div class="option_field">
+			<i class="login__icon fas fa-lock"></i>
+			<select id="Role" name="Role" ngModel="Waiter">
+				
+				<option selected value="Waiter">Waiter</option>
+				<option value="Manager">Manager</option>
+				
+			  </select>
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
-	</div>
+        <button class="button login__submit" [disabled]="registerForm.invalid">
+          <span class="button__text">Register</span>
+          <i class="button__icon fas fa-chevron-right"></i>
+        </button>
+      </form>
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+  </div>
 </div>

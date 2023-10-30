@@ -26,6 +26,7 @@
         <button *ngIf="! isLoggedIn()" type="button" class="btn" [routerLink]='["/login"]'>Login</button>
         <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="logout()" >Logout</button>
       </div>
+      
     </div>
   </nav>
 
