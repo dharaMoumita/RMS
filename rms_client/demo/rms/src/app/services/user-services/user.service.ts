@@ -24,7 +24,7 @@ export class UserService {
   public register(registerData){
     console.log(registerData);
     
-    return this.httpclient.post(this.PATH_OF_API+'/registerNewUser',registerData,{
+    return this.httpclient.post(this.PATH_OF_API+'/user',registerData,{
       headers:this.requestHeader,
     });
   }
@@ -41,6 +41,8 @@ export class UserService {
       responseType: 'text',
     });
   }
+
+  
 
   public roleMatch(allowedRoles): boolean {
     let isMatch = false;

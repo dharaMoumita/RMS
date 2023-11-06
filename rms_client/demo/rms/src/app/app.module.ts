@@ -14,6 +14,9 @@ import { UserComponent } from './user/user.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import MenuComponent from './menu/menu.component';
+import { OrderDetaiilsComponent } from './order-detaiils/order-detaiils.component';
+import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { RegisterComponent } from './register/register.component';
     AdminComponent,
     UserComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MenuComponent,
+    OrderDetaiilsComponent,
+    CustomerRegistrationComponent
   ],
   imports: [
     BrowserModule,

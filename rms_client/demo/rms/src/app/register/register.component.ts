@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginPayload } from '../LoginPayload';
 import { RegisterPayload } from '../RegisterPayload';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user-services/user.service';
 import { Route, Router } from '@angular/router';
 
 @Component({

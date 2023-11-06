@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of food|async">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Display data properties in the card -->
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.desc }}</p>
+            <button (click)="add(item.id)" >ADD</button>
+
+            
+
+            <button (click)="remove(item.id)">Remove</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

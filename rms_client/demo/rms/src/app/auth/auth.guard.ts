@@ -12,8 +12,8 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserAuthService } from '../services/user-auth.service';
-import { UserService } from '../services/user.service';
+import { UserAuthService } from '../services/user-services/user-auth.service';
+import { UserService } from '../services/user-services/user.service';
 // import { UserAuthService } from '../_services/user-auth.service';
 // import { UserService } from '../_services/user.service';
 

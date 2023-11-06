@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <form
+          class="login"
+          #customerregisterForm="ngForm"
+          (ngSubmit)="register(customerregisterForm)"
+
+        >
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input
+              type="text"
+              class="login__input"
+              placeholder="User name"
+              ngModel
+              required
+              minlength="4"
+              #name="ngModel"
+              name="username"
+            />
+
+            
+            
+            
+          </div>
+  
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input
+              type="email"
+              class="login__input"
+              placeholder=" Email"
+              required
+              ngModel
+              #email="ngModel"
+              [email]="true"
+              name="email"
+            />
+          </div>
+  
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input
+              type="text"
+              class="login__input"
+              placeholder="Phone"
+              ngModel
+              required
+              #phone="ngModel"
+              name="phone"
+            
+            />
+            
+          </div>
+
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input
+              type="date"
+              class="login__input"
+              placeholder=" BirthDate"
+              required
+              ngModel
+              #birthdate="ngModel"
+              name="birthdate"
+            />
+            <label class="m-3">Birthdate</label>
+          </div>
+          
+          <button class="button login__submit" [disabled]="customerregisterForm.invalid">
+            <span class="button__text">Register</span>
+            <i class="button__icon fas fa-chevron-right"></i>
+          </button>
+        </form>
+      </div>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
+    </div>
+  </div>
+  
