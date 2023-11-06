@@ -4,12 +4,12 @@ package com.example.rms.Controller;
 import com.example.rms.Entity.Auth.AuthRequest;
 import com.example.rms.Entity.Auth.AuthResponse;
 import com.example.rms.Service.JwtService;
+import com.example.rms.Service.ServiceImpl.JwtServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
+@RequestMapping
 @CrossOrigin
 public class JwtController {
 

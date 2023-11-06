@@ -2,7 +2,7 @@ package com.example.rms.Filter;
 
 
 import com.example.rms.Jwtutil.Jwtutil;
-import com.example.rms.Service.UserDetailsServiceImpl;
+import com.example.rms.Service.ServiceImpl.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,13 +30,14 @@ public class Filter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String authorizationHeader = request.getHeader("Authorization");
-
+        System.out.println("................................. AUthorozation"+authorizationHeader);
         String token = null;
         String userName = null;
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
-            userName = jwtUtil.extractUsername(token);
+            System.out.println("......................................................... token "+ token);
+            userName = jwtUtil.getUsernameFromToken(token);
         }
 
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {

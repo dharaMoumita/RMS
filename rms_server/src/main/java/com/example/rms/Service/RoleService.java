@@ -1,18 +1,13 @@
 package com.example.rms.Service;
 
 import com.example.rms.Entity.Auth.Role;
-import com.example.rms.Repo.RoleRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class RoleService {
+import java.util.List;
 
-    @Autowired
-    private RoleRepo roleRepo;
-
-    public Role createNewRole(Role role) {
-        return roleRepo.save(role);
-
-    }
+public interface RoleService {
+    public Role createNewRole(Role role);
+    public Role deleteRole(int id);
+    public List<Role> getAllRole();
+    public Role getRole(int id);
+    public Role updateRole(Role role,int id);
 }

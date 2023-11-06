@@ -52,10 +52,10 @@ public class WebSecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/authenticate","/registerNewUser").permitAll()
+                        auth.requestMatchers("/authenticate","/user/**","/foods/**","/tables/**","/reserveTable/**","/customer/**").permitAll()
                                 .requestMatchers(HttpHeaders.ALLOW).permitAll()
                                 .requestMatchers("/forAdmin").hasRole("Manager")
-                                .requestMatchers("/forUser").hasRole("Waiter")
+                                .requestMatchers("/forUser","/orderFood/**").hasRole("Waiter")
                                 .anyRequest().authenticated())
 
                 .exceptionHandling(exception->exception.authenticationEntryPoint(unauthorizedHandler))

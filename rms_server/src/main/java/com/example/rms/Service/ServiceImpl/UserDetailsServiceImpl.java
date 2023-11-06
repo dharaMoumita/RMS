@@ -1,9 +1,9 @@
-package com.example.rms.Service;
+package com.example.rms.Service.ServiceImpl;
 
 
 
 import com.example.rms.Entity.Auth.User;
-import com.example.rms.Repo.UserRepo;
+import com.example.rms.DAO.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

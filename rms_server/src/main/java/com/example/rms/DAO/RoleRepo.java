@@ -1,4 +1,4 @@
-package com.example.rms.Repo;
+package com.example.rms.DAO;
 
 import com.example.rms.Entity.Auth.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

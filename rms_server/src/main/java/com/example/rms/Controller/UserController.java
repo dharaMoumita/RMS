@@ -1,12 +1,16 @@
 package com.example.rms.Controller;
 
+import com.example.rms.DTO.UserDTO;
 import com.example.rms.Entity.Auth.User;
-import com.example.rms.Entity.Auth.UserDTO;
+import com.example.rms.Service.ServiceImpl.UserServiceImpl;
 import com.example.rms.Service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("")
@@ -14,13 +18,35 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostConstruct
-    public void initRoleAndUser() {
-        userService.initRoleAndUser();
+//    @PostConstruct
+//    public void initRoleAndUser() {
+//        userService.initRoleAndUser();
+//    }
+
+
+    @PostMapping("/user")
+    public UserDTO registerNewUser(@RequestBody String user)throws Exception {
+        return userService.addUser(user);
     }
-    @PostMapping("/registerNewUser")
-    public User registerNewUser(@RequestBody String user)throws Exception {
-        return userService.registerNewUser(user);
+
+    @GetMapping("/user/{id}")
+    public UserDTO getUser(@PathVariable int id){
+        return  userService.getUser(id);
+    }
+
+    @GetMapping("/user")
+    public List<UserDTO> getAllUser(){
+        return userService.getAllUsers();
+    }
+
+    @DeleteMapping("/user/{id}")
+    public UserDTO deleteUser(int id){
+        return userService.deleteUser(id);
+    }
+
+    @PutMapping("/user/{id}")
+    public UserDTO updateUser(@PathVariable int id,@RequestBody String userDTO)throws Exception{
+        return userService.updateUser(id,userDTO);
     }
 
     @GetMapping({"/forAdmin"})

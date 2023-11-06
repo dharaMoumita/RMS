@@ -1,4 +1,6 @@
-package com.example.rms.Entity.Auth;
+package com.example.rms.DTO;
+
+import java.util.Arrays;
 
 public class UserDTO {
     private int id;
@@ -57,5 +59,16 @@ public class UserDTO {
 
     public void setRole(String[] role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + Arrays.toString(role) +
+                '}';
     }
 }
