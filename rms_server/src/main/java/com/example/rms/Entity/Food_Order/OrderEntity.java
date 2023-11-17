@@ -3,8 +3,9 @@ package com.example.rms.Entity.Food_Order;
 import com.example.rms.Entity.Auth.Customer;
 import com.example.rms.Entity.Auth.User;
 import jakarta.persistence.*;
+import java.sql.Date;
+import java.util.List;
 
-import java.util.*;
 
 @Entity
 @Table(name="Order_Table")

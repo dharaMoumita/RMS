@@ -11,4 +11,5 @@ public interface OrderFoodService {
     public List<OrderDTO> allOrderByUserId();
 
 
+    public void confirmPayment(int id);
 }

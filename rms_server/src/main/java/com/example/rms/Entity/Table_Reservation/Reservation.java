@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 @Entity
 @Table(name="Reservation_Table")

@@ -1,26 +1,36 @@
 package com.example.rms.DTO;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class OrderDTO {
 
     private int id;
     private double price;
-    private String date;
+    private Date date;
     private boolean payment;
     private int userId;
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    private int customerId;
     private List<OrderFoodDTO> orderFoodDTOList;
 
     public int getUserId() {
         return userId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

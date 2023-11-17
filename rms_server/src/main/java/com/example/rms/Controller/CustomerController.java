@@ -4,6 +4,7 @@ import com.example.rms.DTO.CustomerDTO;
 import com.example.rms.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.sql.Date;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/customer")
-    public CustomerDTO addCustomer(@RequestBody CustomerDTO customerDTO){
-        return customerService.addCustomer(customerDTO);
+    public int addCustomer(@RequestBody CustomerDTO customerDTO){
+        return customerService.addCustomer(customerDTO).getId();
     }
 
     @GetMapping("/customer/{id}")

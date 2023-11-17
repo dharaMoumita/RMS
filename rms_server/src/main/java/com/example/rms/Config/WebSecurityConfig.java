@@ -52,9 +52,9 @@ public class WebSecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/authenticate","/user/**","/foods/**","/tables/**","/reserveTable/**","/customer/**").permitAll()
+                        auth.requestMatchers("/authenticate","/user/**","/foods/**","/customer/**").permitAll()
                                 .requestMatchers(HttpHeaders.ALLOW).permitAll()
-                                .requestMatchers("/forAdmin").hasRole("Manager")
+                                .requestMatchers("/forAdmin","/tables/**","/reserveTable/**","/availableTables/**").hasRole("Manager")
                                 .requestMatchers("/forUser","/orderFood/**").hasRole("Waiter")
                                 .anyRequest().authenticated())
 

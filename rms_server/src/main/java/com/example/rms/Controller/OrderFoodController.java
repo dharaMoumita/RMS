@@ -31,4 +31,9 @@ public class OrderFoodController {
         return orderFoodService.allOrderByUserId();
     }
 
+    @GetMapping("/orderFood/payment/{id}")
+    public void setPayment(@PathVariable int id){
+        orderFoodService.confirmPayment(id);
+    }
+
 }
