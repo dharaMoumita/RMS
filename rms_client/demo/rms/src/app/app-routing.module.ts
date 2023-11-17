@@ -10,21 +10,46 @@ import { RegisterComponent } from './register/register.component';
 import MenuComponent from './menu/menu.component';
 import { OrderDetaiilsComponent } from './order-detaiils/order-detaiils.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { BillComponent } from './bill/bill.component';
+import { CanDeactivateGuard } from './auth/bill-deactivate.guard';
+import { TablesComponent } from './tables/tables.component';
+import { ReserveTablesComponent } from './reserve-tables/reserve-tables.component';
+import { TableBillComponent } from './table-bill/table-bill.component';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Manager']}} ,
-  { path: 'user', component: UserComponent  ,canActivate:[AuthGuard], data:{roles:['Waiter']} },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Manager'] },
+  },
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Waiter'] },
+  },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  {path:'register',component:RegisterComponent}
-  ,{path:'menu',component:MenuComponent},
-  {path:'order-detaiils',component:OrderDetaiilsComponent},
-  {path:'customer-registration',component:CustomerRegistrationComponent}
+  { path: 'register', component: RegisterComponent },
+  { path: 'menu', component: MenuComponent },
+  { path: 'order-detaiils', component: OrderDetaiilsComponent },
+  { path: 'customer-registration', component: CustomerRegistrationComponent },
+  {
+    path: 'bill',
+    component: BillComponent,
+    canDeactivate: [CanDeactivateGuard],
+  },
+  { path: 'tables', component: TablesComponent },
+  { path: 'reserve-tables', component: ReserveTablesComponent },
+  { path: 'table-bill', component: TableBillComponent ,canDeactivate: [CanDeactivateGuard]},
+  { path: 'reservation-list', component: ReservationListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

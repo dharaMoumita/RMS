@@ -40,6 +40,10 @@ export class UserService {
     return this.httpclient.get(this.PATH_OF_API + '/forAdmin', {
       responseType: 'text',
     });
+
+  }
+  public getUser(userId:number):Observable<any>{
+    return this.httpclient.get<any>(this.PATH_OF_API+"/user/"+userId);
   }
 
   

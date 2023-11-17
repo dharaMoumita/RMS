@@ -34,8 +34,25 @@ export class OrderFoodService {
     }
 
   }
+  getQuantity(id: number): number {
+    if(this.orderFoodQuantity==null){
+      return 0;
+    }
+    const product = this.orderFoodQuantity.find(item => item.food_id === id);
+    return product ? product.quantity : 0; // Returns the quantity if the product is in the order
+  }
 
   getOrderFoodQuantity():OrderFoodPayload[]{
     return this.orderFoodQuantity;
   }
+
+  
+
+  removeAllProduct(){
+    this.orderFoodQuantity=[];
+    console.log(this.orderFoodQuantity);
+    
+  }
+
+  
 }

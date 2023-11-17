@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of data;index as i" >
+      <div class="card mb-4">
+        <div class="card-body">
+          <!-- Display data properties in the card -->
+          <p class="card-title">Table NO-{{ item?.tableNo }}</p>
+
+          <h5 class="card-text">Table Capacity-{{ item.capacity }}</h5>
+          <h5 class="card-text">Reserved status- {{ item.status }}</h5>
+          <h5 class="card-text">Reservtion Date- {{ item.reservationDate }}</h5>
+          <h5 class="card-text">Reservtion Date- {{ item.capacity }}</h5>
+          <h5 class="card-text">Customer Name- {{ item?.['customerName'] }}</h5>
+          <h5 class="card-text">Reservation Id- {{ item.reservationId+""+item.capacity}}</h5>
+            
+
+
+          <button (click)="cancelReservation(item.reservationId)" *ngIf="item.status==true">Cancel Reservation</button>
+
+          <!--<p> {{getQuantity(item.id)}}</p>-->
+
+          <!-- <button (click)="remove(item.id)">Reserve</button>  -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>

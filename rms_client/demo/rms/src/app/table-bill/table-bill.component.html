@@ -1,0 +1,46 @@
+<div>
+<div class="container mt-4" #biigenerator >
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Customer Details</h3>
+        <p><strong>Name:</strong> {{customerName}}</p>
+        <p><strong>Phone:</strong> {{ customerPhone }}</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Created by</h3>
+        <p><strong>Created by:</strong> {{ createdBy }}</p>
+        <!-- <h3>Ordred Date</h3> -->
+        <!-- <p><strong>Created by:</strong> {{ orderedDate }}</p> -->
+  
+  
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col ">
+        <h3>Reservation Details</h3>
+        <p><strong>Reservation ID: {{ reservationId }}</strong></p>
+        <p><strong>Reservation status: {{ status }}</strong></p>
+        <p><strong>Table No: {{ tableNo }}</strong></p>
+        <p><strong>Table Capacity: {{ capacity }}</strong></p>
+
+
+
+
+
+
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-6">
+        <p><strong>Total Price: ${{ totalPrice }}</strong></p>
+      </div>
+    </div>
+
+  </div>
+    <button (click)="exit()">exit</button>
+    <button (click)="generatePDF()">Genertae Bill</button>
+
+  
+  
+  </div>
+  

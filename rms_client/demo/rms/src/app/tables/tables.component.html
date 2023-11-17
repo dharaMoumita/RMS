@@ -1,0 +1,23 @@
+<div class="container">
+<app-table-header (newItemEvent)="showTables($event)"></app-table-header>
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of tableList">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Display data properties in the card -->
+            <p class="card-title">Table NO-{{ item.tableNo }}</p>
+
+            <h5 class="card-text">Table Capacity-{{ item.capacity }}</h5>
+            <!-- <button (click)="add(item.id)" >ADD</button>
+
+            <p> {{getQuantity(item.id)}}</p>-->
+
+            <button (click)="remove(item.id)">Reserve</button> 
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

@@ -23,7 +23,13 @@ export class FoodService {
   }
 
   public addOrder(orderFoodDTOList:any){
-    return this.httpClient.post(this.PATH_OF_API+'/orderFood',orderFoodDTOList);
+    return this.httpClient.post(this.PATH_OF_API+'/orderFood',orderFoodDTOList).toPromise();
+  }
+
+  public SetPayment(orderId:number){
+    console.log(orderId);
+    
+    return this.httpClient.get(this.PATH_OF_API+"/orderFood/payment/"+orderId)
   }
 
 

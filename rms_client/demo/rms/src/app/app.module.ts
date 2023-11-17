@@ -17,6 +17,12 @@ import { RegisterComponent } from './register/register.component';
 import MenuComponent from './menu/menu.component';
 import { OrderDetaiilsComponent } from './order-detaiils/order-detaiils.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { BillComponent } from './bill/bill.component';
+import { TablesComponent } from './tables/tables.component';
+import { ReserveTablesComponent } from './reserve-tables/reserve-tables.component';
+import { TableHeaderComponent } from './table-header/table-header.component';
+import { TableBillComponent } from './table-bill/table-bill.component';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,13 @@ import { CustomerRegistrationComponent } from './customer-registration/customer-
     HeaderComponent,
     MenuComponent,
     OrderDetaiilsComponent,
-    CustomerRegistrationComponent
+    CustomerRegistrationComponent,
+    BillComponent,
+    TablesComponent,
+    ReserveTablesComponent,
+    TableHeaderComponent,
+    TableBillComponent,
+    ReservationListComponent
   ],
   imports: [
     BrowserModule,
