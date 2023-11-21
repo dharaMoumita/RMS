@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
 import { Observable } from 'rxjs';
 // import { UserAuthService } from './user-auth.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root',
@@ -48,22 +49,33 @@ export class UserService {
 
   
 
-  public roleMatch(allowedRoles): boolean {
+  public roleMatch(allowedRoles : Array<string>): boolean {
     let isMatch = false;
-    const userRoles: any = this.userAuthService.getRoles();
+    const helper = new JwtHelperService();
+    const token=this.userAuthService.getToken();
+    if(token!=null){
+    const decodedToken = helper.decodeToken(this.userAuthService.getToken());
+    const roles=decodedToken.Roles;
+    
+    // const userRoles: any [] = this.userAuthService.getRoles();
+  const userRoles: any [] = roles;
 
+    // console.log(userRoles);
+    
     if (userRoles != null && userRoles) {
       for (let i = 0; i < userRoles.length; i++) {
         for (let j = 0; j < allowedRoles.length; j++) {
-          if (userRoles[i].roleName === allowedRoles[j]) {
+          if (userRoles[i]== allowedRoles[j]) {
             isMatch = true;
+            
             return isMatch;
           } else {
+            
             return isMatch;
           }
         }
       }
-    }
+    }}
     return isMatch;
   }
 }

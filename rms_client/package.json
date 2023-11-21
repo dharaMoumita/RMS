@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@developer-partners/ngx-modal-dialog": "^1.0.5"
+  }
+}

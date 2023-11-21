@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CustomerPayload } from '../CustomerPayload';
 import { OrderFoodService } from '../services/food-services/order-food.service';
@@ -14,13 +14,13 @@ import { UserService } from '../services/user-services/user.service';
 })
 export class CustomerRegistrationComponent {
 customerPayload:CustomerPayload;
-
+custId: any;
   PATH_OF_API = 'http://localhost:8082';
 
   constructor(private httpClient:HttpClient, private orderfoodService:OrderFoodService,private router:Router,
     public userService: UserService
     ,private customerService:CustomerServiceService){}
-
+    
   register(cusomerForm: NgForm) {
     if(cusomerForm.valid){
       console.log(cusomerForm.value);

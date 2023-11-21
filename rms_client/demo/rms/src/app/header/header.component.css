@@ -1,9 +1,17 @@
-.btn{
+/* .btn{
     margin-left: 2rem;
     color: #4C489D;
     background-color:white;
-}
-.custom-navbar{
+} */
+/* .custom-navbar{
     background-color:  #4C489D;
     
+} */
+.custom-navbar{
+    border-bottom: black solid;
+    opacity: 0.8;
+    
+  }
+.btn{
+    background-color: gray;
 }

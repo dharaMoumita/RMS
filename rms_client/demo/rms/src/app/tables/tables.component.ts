@@ -4,6 +4,8 @@ import { TablePayload } from '../TablePayload';
 import { TableDetailsService } from '../services/table-services/table-details.service';
 import { TableReservePayload } from '../TableReservePayload';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerCheckComponent } from '../customer-check/customer-check.component';
 
 @Component({
   selector: 'app-tables',
@@ -19,7 +21,8 @@ export class TablesComponent implements OnInit {
   constructor(
     private taleService: TaleService,
     private tableDetailService: TableDetailsService,
-    private router:Router
+    private router: Router,
+    private dialogRef: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -57,10 +60,18 @@ export class TablesComponent implements OnInit {
     else {
       const reserveDetailis: any = {
         ...this.tableReserveDetails,
-        tId:tableId,
+        tId: tableId,
       };
       this.tableDetailService.setTableReserveDetails(reserveDetailis);
-       this.router.navigate(['customer-registration']);
+
+      this.dialogRef.open(CustomerCheckComponent, {
+        width: '600px',
+        maxHeight: '160vh',
+        autoFocus: true,
+        panelClass: ['custom-dialog-class'],
+      });
+      // this.router.navigate(['customer-check']);
+    }
 
     //   this.taleService
     //     .makeReservation(tableId, reserveDetailis)
@@ -68,11 +79,9 @@ export class TablesComponent implements OnInit {
     //       console.log(result);
     //     });
     // }
-
-
-
   }
-}
+
+  
 }
 
 // if (

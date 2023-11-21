@@ -12,13 +12,18 @@ import { TablePayload } from '../TablePayload';
 export class TableHeaderComponent {
   capacity: number;
   date: Date;
+  minDate:any;
   data:TablePayload[]=[];
   @Output() newItemEvent = new EventEmitter<{tableData: TablePayload[],inputData:TableReservePayload}>();
 
   constructor(
     private taleService: TaleService,
     private tableDetailService: TableDetailsService
-  ) {}
+  ) {
+
+     this.minDate=new Date().toISOString().split('T')[0];
+    console.log(this.minDate);
+    }
 
 
   getData() {
@@ -39,6 +44,9 @@ this.taleService.getTablesAvailable(tableReserveDetails).subscribe(result=>{
 
 
       }
+
+
+  
   
 }
 // if (

@@ -1,19 +1,24 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let item of food|async">
-        <div class="card mb-4">
-          <div class="card-body">
-            <!-- Display data properties in the card -->
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.desc }}</p>
-            <button (click)="add(item.id)" >ADD</button>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let item of food | async">
+      <div class="card mb-4">
+        <!-- Example image -->
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Food Image">
 
-            <p> {{getQuantity(item.id)}}</p>
+        <div class="card-body">
+          <!-- Display data properties in the card -->
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.desc }}</p>
 
-            <button (click)="remove(item.id)">Remove</button>
-
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button class="btn btn-sm btn-outline-secondary" (click)="add(item.id)">ADD</button>
+              <button class="btn btn-sm btn-outline-secondary" (click)="remove(item.id)">Remove</button>
+            </div>
+            <small class="text-muted">{{ getQuantity(item.id) }}</small>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

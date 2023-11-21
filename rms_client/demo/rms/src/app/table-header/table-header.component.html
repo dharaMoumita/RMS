@@ -1,23 +1,19 @@
 <div class="container">
-    
-    <div class="row">
-      <div class="col-md-5">
-        <div class="form-group">
-          <label for="capacity">Capacity</label>
-          <input type="number" class="form-control" id="capacity" placeholder="Capacity" [(ngModel)]="capacity">
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="form-group">
-          <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" placeholder="Date" [(ngModel)]="date">
-        </div>
-      </div>
-          <div class="col-md-2">
-        <button class="btn btn-primary" (click)="getData()">Search Table</button>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input type="number" class="form-control" id="capacity" placeholder="Capacity" [(ngModel)]="capacity">
       </div>
     </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" [min]="minDate" name="reservedate" placeholder="Date" [(ngModel)]="date">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="getData()">Search Table</button>
+    </div>
+  </div>
 </div>
-
-  
-  

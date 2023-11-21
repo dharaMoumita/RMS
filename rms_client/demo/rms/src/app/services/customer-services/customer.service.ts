@@ -15,6 +15,10 @@ export class CustomerServiceService {
     return this.httpclient.get<any>(this.PATH_OF_API+"/customer/"+userId);
   }
 
+  public getCustomerByPHone(phone:string):Observable<any>{
+    return this.httpclient.get<any>(this.PATH_OF_API+"/customer/check/"+phone);
+  }
+
   setCustomerRegistration(custId:any){
     this.customerId=custId;
   }

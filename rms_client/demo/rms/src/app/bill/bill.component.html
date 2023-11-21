@@ -1,81 +1,22 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bill Template</title>
-</head>
-<body>
-  <div class="container">
-    <h1 class="text-center mt-4">Bill</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Customer Details</h4>
-        <p><strong>Customer Name:</strong>{{customerName}}</p>
-        <p><strong>Customer Phone:</strong>{{customerPhone}}</p> -->
-
-        <!-- <p><strong>Customer Address:</strong> 123 Main St, City, Country</p> -->
-      <!-- </div>
-      <div class="col-md-6">
-        <h4>Order Details</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Item 1</td>
-              <td>2</td>
-              <td>$20.00</td>
-            </tr>
-            <tr>
-              <td>Item 2</td>
-              <td>3</td>
-              <td>$15.00</td>
-            </tr> -->
-            <!-- You can add more rows as needed -->
-          <!-- </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-6">
-        <p><strong>Created by:</strong>{{createdBy}}</p>
-        <p><strong>Ordered date:</strong>{{orderedDate}}</p>
-        <p><strong>Total amount to be paid:</strong>{{totalPrice}}</p>
-
-      </div>
-    </div>
-  </div>
-
-</body>
-</html> -->
-<div >
-<div class="container mt-4" #biigenerator >
+<div class="container mt-4" #biigenerator>
   <div class="row">
     <div class="col-md-6">
       <h3>Customer Details</h3>
-      <p><strong>Name:</strong> {{customerName}}</p>
+      <p><strong>Name:</strong> {{ customerName }}</p>
       <p><strong>Phone:</strong> {{ customerPhone }}</p>
     </div>
     <div class="col-md-6">
       <h3>Created by</h3>
       <p><strong>Created by:</strong> {{ createdBy }}</p>
-      <h3>Ordred Date</h3>
-      <p><strong>Created by:</strong> {{ orderedDate }}</p>
-
-
+      <h3>Ordered Date</h3>
+      <p><strong>Ordered Date:</strong> {{ orderedDate }}</p>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-md-12">
       <h3>Order Details</h3>
-      <table class="table">
-        <thead>
+      <table class="table table-striped">
+        <thead class="thead-dark">
           <tr>
             <th>Item</th>
             <th>Quantity</th>
@@ -83,12 +24,12 @@
             <th>Subtotal</th>
           </tr>
         </thead>
-        <tbody *ngIf="orderDetails!=null">
+        <tbody *ngIf="orderDetails != null">
           <tr *ngFor="let item of orderDetails">
             <td>{{ item.foodItem.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td>${{item.foodItem.price}}</td>
-            <td>${{ item.price}}</td>
+            <td>${{ item.foodItem.price }}</td>
+            <td>${{ item.price }}</td>
           </tr>
         </tbody>
       </table>
@@ -99,11 +40,9 @@
       <p><strong>Total Price: ${{ totalPrice }}</strong></p>
     </div>
   </div>
-
-
 </div>
-<button (click)="confirmExit()">Order More</button>
-<button (click)="exit()">Home</button>
-
-<button (click)="generatePDF()">Generate Bill</button>
+<div class="container mt-3">
+  <button class="btn btn-primary" (click)="confirmExit()">Order More</button>
+  <button class="btn btn-secondary mx-2" (click)="exit()">Home</button>
+  <button class="btn btn-success" (click)="generatePDF()">Generate Bill</button>
 </div>

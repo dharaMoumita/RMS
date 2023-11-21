@@ -16,6 +16,7 @@ import { TablesComponent } from './tables/tables.component';
 import { ReserveTablesComponent } from './reserve-tables/reserve-tables.component';
 import { TableBillComponent } from './table-bill/table-bill.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
+import { CustomerCheckComponent } from './customer-check/customer-check.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,8 +35,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'menu', component: MenuComponent },
-  { path: 'order-detaiils', component: OrderDetaiilsComponent },
+  { path: 'menu', component: MenuComponent    , data: { roles: ['Waiter'] },    canActivate: [AuthGuard],
+
+},
+  { path: 'order-detaiils', component: OrderDetaiilsComponent,data: { roles: ['Waiter'] },    canActivate: [AuthGuard], },
   { path: 'customer-registration', component: CustomerRegistrationComponent },
   {
     path: 'bill',
@@ -46,6 +49,8 @@ const routes: Routes = [
   { path: 'reserve-tables', component: ReserveTablesComponent },
   { path: 'table-bill', component: TableBillComponent ,canDeactivate: [CanDeactivateGuard]},
   { path: 'reservation-list', component: ReservationListComponent },
+  { path: 'customer-check', component: CustomerCheckComponent },
+
 ];
 
 @NgModule({

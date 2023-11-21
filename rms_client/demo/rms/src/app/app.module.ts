@@ -23,6 +23,10 @@ import { ReserveTablesComponent } from './reserve-tables/reserve-tables.componen
 import { TableHeaderComponent } from './table-header/table-header.component';
 import { TableBillComponent } from './table-bill/table-bill.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
+import { CustomerCheckComponent } from './customer-check/customer-check.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -43,14 +47,18 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
     ReserveTablesComponent,
     TableHeaderComponent,
     TableBillComponent,
-    ReservationListComponent
+    ReservationListComponent,
+    CustomerCheckComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
+
   ],
   providers: [
     {

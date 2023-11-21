@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerCheckComponent } from '../customer-check/customer-check.component';
+
 
 @Component({
   selector: 'app-user',
@@ -7,10 +10,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private dialogRef : MatDialog){}
+
 goto() {
-  this.router.navigate(['customer-registration']);
+  this.dialogRef.open(CustomerCheckComponent,{
+    "width": '600px',
+    "maxHeight": '160vh',
+    "data": "John",
+    "autoFocus": true,
+    panelClass: ['custom-dialog-class']
+
+  });
+  // this.router.navigate(['customer-check']);
 
 }
 

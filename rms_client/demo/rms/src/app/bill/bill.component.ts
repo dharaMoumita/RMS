@@ -47,7 +47,7 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
   ngOnInit(): void {
     this.currentOrderId = +JSON.parse(localStorage.getItem('currentOrder'));
     console.log(this.currentOrderId);
-
+    if(this.currentOrderId!=0){
     this.abc = this.httpClient
       .get(this.PATH_OF_API + '/orderFood/' + this.currentOrderId)
       .toPromise()
@@ -79,11 +79,15 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
       });
 
     console.log(this.orderList);
+    }
+    else{
+      this.exit();
+    }
   }
   exit() {
     this.hasUnsavedChanges = true;
     localStorage.removeItem('currentOrder');
-
+    this.customerSErvice.setCustomerRegistration(null);
     this.routr.navigate(['home']);
   }
 
@@ -100,10 +104,11 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
         );
       })
       .finally(() => {
+        this.customerSErvice.setCustomerRegistration(null);
+
         this.routr.navigate(['menu']);
       });
   }
-  title = 'pdfGenerator';
 
   generatePDF() {
     const pdfWidth = 1200; // Width of an A4 paper
