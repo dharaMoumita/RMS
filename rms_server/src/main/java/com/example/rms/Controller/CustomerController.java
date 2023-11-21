@@ -3,6 +3,7 @@ package com.example.rms.Controller;
 import com.example.rms.DTO.CustomerDTO;
 import com.example.rms.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 
@@ -39,5 +40,10 @@ public class CustomerController {
     @PutMapping("/customer/{id}")
     public CustomerDTO updateCustomer(@RequestBody CustomerDTO customerDTO,@PathVariable int id){
         return customerService.update(id,customerDTO);
+    }
+
+    @GetMapping("/customer/check/{phone}")
+    public CustomerDTO getByCustomerPhone(@PathVariable String phone){
+        return customerService.findCustomerByPhone(phone);
     }
 }

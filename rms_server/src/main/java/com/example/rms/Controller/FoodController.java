@@ -3,6 +3,7 @@ package com.example.rms.Controller;
 import com.example.rms.DTO.FoodDTO;
 import com.example.rms.Service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.sql.Date;
 @CrossOrigin
 @RestController
 @RequestMapping
+@PreAuthorize("hasRole('Waiter')")
 public class FoodController {
 
     @Autowired

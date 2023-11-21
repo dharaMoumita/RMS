@@ -39,7 +39,14 @@ public class CustomerServiceImpl implements CustomerService {
         });
         return customerDTOList;
     }
-
+    public CustomerDTO findCustomerByPhone(String phone){
+        List<Customer> customerList=customerRepo.findByPhone(phone);
+        if(customerList.isEmpty()){
+            return null;
+        }else {
+            return CustomertoCustomerDTO(customerList.get(0));
+        }
+    }
 
     @Override
     public CustomerDTO deleteCustomer(int id) {

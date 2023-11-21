@@ -1,19 +1,23 @@
 package com.example.rms.Jwtutil;
 
 
+import com.example.rms.DAO.UserRepo;
+import com.example.rms.Entity.Auth.Role;
+import com.example.rms.Entity.Auth.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 @Component
 public class Jwtutil {
+@Autowired
+    private UserRepo userRepo;
 
     private static final String SECRET_KEY = "moumita";
 
@@ -49,6 +53,12 @@ public class Jwtutil {
     public String generateToken(UserDetails userDetails) {
 
         Map<String, Object> claims = new HashMap<>();
+        Set<String> Userroles = new HashSet<>();
+        User user = userRepo.findByUserName(userDetails.getUsername());
+        for(Role role:user.getRole()){
+            Userroles.add(role.getRoleName());
+        }
+        claims.put("Roles",Userroles.toArray());
 
         return Jwts.builder()
                 .setClaims(claims)

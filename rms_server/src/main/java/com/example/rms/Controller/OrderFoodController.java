@@ -4,6 +4,7 @@ import com.example.rms.DTO.OrderDTO;
 import com.example.rms.Service.OrderFoodService;
 import org.springframework.aop.target.LazyInitTargetSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("")
 @CrossOrigin
+@PreAuthorize("hasRole('Waiter')")
 public class OrderFoodController {
 
     @Autowired

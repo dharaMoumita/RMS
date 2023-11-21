@@ -36,6 +36,7 @@ public class JwtServiceImpl implements JwtService {
         authenticate(userName, userPassword);
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+        System.out.println("..................................................................."+userDetailsService.getAuthority(userRepo.findByUserName(userDetails.getUsername())));
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
         System.out.println("----------------------------------------  token "+newGeneratedToken);
         System.out.println(userDetails);
