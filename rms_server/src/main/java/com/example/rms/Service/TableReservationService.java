@@ -21,7 +21,6 @@ public interface TableReservationService {
 
     public List<Tables> findByDate(Date date);
     public ReservationDetailsDTO getByReservationId(int id);
-
         List<Tables> tablesAvailable(TableReserveDTO tableReserveDTO);
 
     int reserveTableById(int id, TableReserveDTO tableReserveDTO) throws Exception;

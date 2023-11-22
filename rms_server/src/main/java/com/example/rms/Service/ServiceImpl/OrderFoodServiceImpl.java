@@ -79,6 +79,22 @@ public class OrderFoodServiceImpl implements OrderFoodService {
         orderRepo.save(order);
     }
 
+    @Override
+    public List<OrderDTO> getallOrderByDateUser() {
+        User currentUser=currentUser();
+        long millis=System.currentTimeMillis();
+        List<OrderDTO> orderDTOList=new ArrayList<>();
+        Date today = new java.sql.Date(millis);
+        System.out.println(today);
+        List<OrderEntity> orderEntityList=orderRepo.findAllOrdersByDate(today);
+        orderEntityList.forEach(ele->{
+            if(ele.getUser()==currentUser){
+            orderDTOList.add(OrderEntitytoOrderDTO(ele));}
+        });
+
+        return orderDTOList;
+    }
+
     private OrderDTO OrderEntitytoOrderDTO(OrderEntity orderEntity){
         OrderDTO orderDTO=new OrderDTO();
         orderDTO.setId(orderEntity.getId());

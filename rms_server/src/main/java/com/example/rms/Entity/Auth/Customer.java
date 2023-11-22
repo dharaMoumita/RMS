@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Entity
-@Table(name = "customer_table")
+@Table(name = "customer_table",uniqueConstraints = { @UniqueConstraint(columnNames = { "customer_phone" }) })
 public class Customer {
 
     @Id

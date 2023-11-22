@@ -12,4 +12,6 @@ public interface OrderFoodService {
 
 
     public void confirmPayment(int id);
+
+    List<OrderDTO> getallOrderByDateUser();
 }

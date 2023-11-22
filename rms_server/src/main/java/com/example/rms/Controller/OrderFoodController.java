@@ -38,4 +38,9 @@ public class OrderFoodController {
         orderFoodService.confirmPayment(id);
     }
 
+    @GetMapping("/orderFood/date")
+    public List<OrderDTO> getOrderByDate(){
+       return orderFoodService.getallOrderByDateUser();
+    }
+
 }
