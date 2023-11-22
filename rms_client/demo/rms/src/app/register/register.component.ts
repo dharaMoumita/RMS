@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   }
   register(registerForm: NgForm) {
-    // console.log(registerForm.value);
+    console.log(registerForm.value);
     if (registerForm.valid) {
       this.role.push(registerForm.value.Role);
       this.data = new RegisterPayload(

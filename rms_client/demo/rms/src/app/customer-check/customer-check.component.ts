@@ -18,8 +18,9 @@ constructor(private router:Router, private dialogRef : MatDialog,private custome
 
 checkCustomer() {
   this.customerSErvice.getCustomerByPHone(this.phone).subscribe(result=>{
-    console.log(result);
     if(result){
+      console.log(result['id']);
+
       this.customerSErvice.setCustomerRegistration(result['id']);
       if(this.userService.roleMatch(['Waiter'])){
         this.router.navigate(['menu'])

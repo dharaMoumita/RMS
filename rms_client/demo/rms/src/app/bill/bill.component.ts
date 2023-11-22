@@ -111,6 +111,13 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
   }
 
   generatePDF() {
+
+
+
+    this.foodService.SetPayment(this.currentOrderId).subscribe(()=>{
+      console.log("Payment Confirmed");
+      
+    });
     const pdfWidth = 1200; // Width of an A4 paper
     const pdfHeight = 1200; // Height of an A4 paper
 
@@ -139,4 +146,5 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
 
     // }
   }
+  
 }

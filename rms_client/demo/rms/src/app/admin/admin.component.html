@@ -1,4 +1,24 @@
-
-
-<p>manager works!</p>
-<button (click)="goto()">Customer Registratiom</button>
+<div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let item of data; index as i">
+          <!-- Details in each row -->
+          <div class="card mb-4 reservation-card" style="border: 1px solid #ccc; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">
+            <div class="card-body">
+              <p class="card-title">Table No. {{ item?.tableNo }}</p>
+              <h5 class="card-text">Table Capacity: {{ item.capacity }}</h5>
+              <h5 class="card-text">Reserved Status: {{ item.status ? 'Reserved' : 'Not Reserved' }}</h5>
+              <h5 class="card-text">Reservation Date: {{ item.reservationDate }}</h5>
+              <h5 class="card-text">Customer Name: {{ item?.customerName }}</h5>
+              <h5 class="card-text">Reservation ID: {{ item.reservationId + '' + item.capacity }}</h5>
+              <div class="d-flex justify-content-end"> 
+                <button class="btn btn-danger btn-sm" (click)="cancelReservation(item.reservationId)" [disabled]="!item.status" >Cancel Reservation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

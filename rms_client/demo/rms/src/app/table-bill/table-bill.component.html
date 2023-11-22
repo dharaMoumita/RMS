@@ -2,7 +2,7 @@
   <div class="container mt-4" #biigenerator>
     <div class="row">
       <div class="col-md-6">
-        <h3>Customer Details</h3>
+        <h3 class="text-center fw-bold">Customer Details</h3>
         <div class="card">
           <div class="card-body">
             <p class="card-text"><strong>Name:</strong> {{customerName}}</p>
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <h3>Created by</h3>
+        <h3 class="text-center fw-bold">Created by</h3>
         <div class="card">
           <div class="card-body">
             <p class="card-text"><strong>Created by:</strong> {{ createdBy }}</p>
@@ -21,18 +21,33 @@
     </div>
     <div class="row mt-4">
       <div class="col">
-        <h3>Reservation Details</h3>
+        <h3 class="text-center fw-bold">Reservation Details</h3>
         <div class="card">
           <div class="card-body">
-            <p class="card-text"><strong>Reservation ID:</strong> {{ reservationId }}</p>
-            <p class="card-text"><strong>Reservation status:</strong> {{ status }}</p>
-            <p class="card-text"><strong>Table No:</strong> {{ tableNo }}</p>
-            <p class="card-text"><strong>Table Capacity:</strong> {{ capacity }}</p>
+            <table class="table"> 
+              <tbody>
+                <tr>
+                  <th>ID</th>
+                  <td>{{ reservationId }}</td>
+                </tr>
+                <tr>
+                  <th>Reservation Status</th>
+                  <td>{{ status }}</td>
+                </tr>
+                <tr>
+                  <th>Table No</th>
+                  <td>{{ tableNo }}</td>
+                </tr>
+                <tr>
+                  <th>Table Capacity</th>
+                  <td>{{ capacity }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mt-3">
+    </div>    <div class="row mt-3">
       <div class="col-md-6 offset-md-6">
         <div class="card">
           <div class="card-body">
@@ -42,8 +57,8 @@
       </div>
     </div>
   </div>
-  <div class="mt-3 d-flex justify-content-between">
-    <button class="btn btn-secondary" (click)="exit()">Exit</button>
-    <button class="btn btn-primary" (click)="generatePDF()">Generate Bill</button>
-  </div>
+  <div class="container mt-5">
+  <button class="btn btn-secondary mx-2" (click)="exit()">Home</button>
+  <button class="btn btn-success" (click)="generatePDF()">Generate Bill</button>
+</div>
 </div>

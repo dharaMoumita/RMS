@@ -1,55 +1,82 @@
-
-
- <nav class="navbar navbar-expand-lg fixed custom-navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">RMS</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+<nav class="navbar navbar-expand-lg fixed custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">RMS</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/admin"
             *ngIf="userService.roleMatch(['Manager'])"
-            >Manager Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/tables"
-                        *ngIf="userService.roleMatch(['Manager'])"
-
-            >Tables</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/reservation-list"
-                        *ngIf="userService.roleMatch(['Manager'])"
-
-            >Reservations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/order-detaiils"
+            >Manager Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/tables"
+            *ngIf="userService.roleMatch(['Manager'])"
+            >Tables</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/reservation-list"
+            *ngIf="userService.roleMatch(['Manager'])"
+            >Reservations</a
+          > 
+        </li> -->
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/order-detaiils"
             *ngIf="userService.roleMatch(['Waiter'])"
-            >Order</a>
-          </li>
+            >Order</a
+          >
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/user"
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/user"
             *ngIf="userService.roleMatch(['Waiter'])"
-            >Waiter Dashboard</a>
-          </li>
-
-         
-        </ul>
-        <button *ngIf="! isLoggedIn()" type="button" class="btn" [routerLink]='["/login"]'>Login</button>
-        <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="logout()" >Logout</button>
-      </div>
-      
+            >Waiter Dashboard</a
+          >
+        </li>
+      </ul>
+      <button
+        *ngIf="!isLoggedIn()"
+        type="button"
+        class="btn"
+        [routerLink]="['/login']"
+      >
+        Login
+      </button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="logout()">
+        Logout
+      </button>
     </div>
-  </nav>
-
-
-
-
-
+  </div>
+</nav>

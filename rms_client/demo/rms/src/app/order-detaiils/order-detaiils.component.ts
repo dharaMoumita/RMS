@@ -28,6 +28,13 @@ export class OrderDetaiilsComponent implements OnInit {
   
   ngOnInit() {
     this.orderFoodQuantity = this.orderFoodService.getOrderFoodQuantity();
+    console.log(this.orderFoodQuantity);
+    
+    if(this.orderFoodQuantity.length==0){
+
+      alert("Sorry You dont have any orders")
+      this.route.navigate(["home"]);
+    }
 
     this.orderDetails = this.orderDetailSErvice.getOrderDetail(this.orderFoodQuantity);
     

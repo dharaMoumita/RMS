@@ -1,1 +1,40 @@
-<button (click)="goto()">Customer Registratiom</button>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Today's Orders</h5>
+            <p class="card-text">{{todayOrders}}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">All Orders</h5>
+            <p class="card-text">{{allOrders}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Today Earning</h5>
+            <p class="card-text">{{todayEarning}}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">All Earning</h5>
+            <p class="card-text">{{allEarning}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12 btn-take-order">
+        <button class="btn btn-primary" (click)="goto()">Take Order</button>
+      </div>
+    </div>
+  </div>
+  

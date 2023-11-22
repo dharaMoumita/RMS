@@ -2,3 +2,24 @@
     margin: 50px; /* Adjust the margin as needed */
     padding: 45px; /* Adjust the padding as needed */
   }
+  .card {
+    margin-bottom: 20px;
+    height: 200px; /* Set the height of the cards */
+  }
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  .btn-take-order {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .row{
+    margin-top: 50px;
+  }
+  .card-text, .card-title{
+    font-size: larger;
+  }

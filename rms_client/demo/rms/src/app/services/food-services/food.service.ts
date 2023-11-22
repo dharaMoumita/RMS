@@ -32,6 +32,14 @@ export class FoodService {
     return this.httpClient.get(this.PATH_OF_API+"/orderFood/payment/"+orderId)
   }
 
+  public getTodayOrder():Observable<Array<any>>{
+    return this.httpClient.get<Array<any>>(this.PATH_OF_API+"/orderFood/date");
+  }
+
+  public getALlOrder():Observable<Array<any>>{
+    return this.httpClient.get<Array<any>>(this.PATH_OF_API+"/orderFood/user");
+  }
+
 
 
 }
