@@ -1,0 +1,207 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ todayOrders }}</h5>
+          <p class="card-text">Today's Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getTodayOrders()">Get Details</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ allOrders }}</h5>
+          <p class="card-text">All Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()">Get Details</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ todayEarning }}</h5>
+          <p class="card-text">Today's Earning</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTodayOrders()">Get Details</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ allEarning}}</h5>
+          <p class="card-text">All Earning</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()">Get Details </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ pending }}</h5>
+          <p class="card-text">Pending Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getPendingOrders()">Action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 btn-take-order">
+      <button class="btn btn-secondary" (click)="goto()">Take Order</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Pending Orders</h1>
+        <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Payent Ststud</th>
+              <th>Price</th>
+              <th>Order Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.id }}</td>
+              <td>{{order.payment?"Paid":"Pending"}}</td>
+              <td>{{ order.price }}</td>
+              <td>{{order.date}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="viewOrder(order.id)">View Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closebutton" (click)="onCloseModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card background mb-3">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ todayOrders }}</h5>
+          <p class="card-text">Today's Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" style="background-color: #776B5D;"data-bs-target="#exampleModal"(click)="getTodayOrders()">Action</button>
+        </div>
+      </div>
+      <div class="card background">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ allOrders }}</h5>
+          <p class="card-text">All Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal"  style="background-color: #776B5D;"data-bs-target="#exampleModal" (click)="getAllOrders()">Action</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3 background">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ todayEarning }}</h5>
+          <p class="card-text">Today's Earning</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" style="background-color: #776B5D;" data-bs-target="#exampleModal" (click)="getTodayOrders()">Get Details</button>
+        </div>
+      </div>
+      <div class="card background">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ allEarning }}</h5>
+          <p class="card-text">All Earning</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()" style="background-color: #776B5D;">Action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6 offset-md-3">
+      <div class="card background">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold mb-3">{{ pending }}</h5>
+          <p class="card-text">Pending Orders</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getPendingOrders()" style="background-color: #776B5D;">Action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 btn-take-order">
+      <button class="btn btn-secondary" (click)="goto()">Take Order</button>
+    </div>
+  </div>
+</div> 
+
+
+<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Pending Orders</h1>
+        <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Payent Ststud</th>
+              <th>Price</th>
+              <th>Order Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.id }}</td>
+              <td>{{order.payment?"Paid":"Pending"}}</td>
+              <td>{{ order.price }}</td>
+              <td>{{order.date}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="viewOrder(order.id)">View Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closebutton" (click)="onCloseModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>-->

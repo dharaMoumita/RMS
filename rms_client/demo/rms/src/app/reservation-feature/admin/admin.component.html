@@ -1,0 +1,135 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let item of data; index as i">
+          <div class="card mb-4 reservation-card" style="border: 1px solid #ccc; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">
+            <div class="card-body">
+              <p class="card-title">Table No. {{ item?.tableNo }}</p>
+              <h5 class="card-text">Table Capacity: {{ item.capacity }}</h5>
+              <h5 class="card-text">Reserved Status: {{ item.status ? 'Reserved' : 'Not Reserved' }}</h5>
+              <h5 class="card-text">Reservation Date: {{ item.reservationDate }}</h5>
+              <h5 class="card-text">Customer Name: {{ item?.customerName }}</h5>
+              <h5 class="card-text">Reservation ID: {{ item.reservationId + '' + item.capacity }}</h5>
+              <div class="d-flex justify-content-end"> 
+                <button class="btn btn-danger btn-sm" (click)="cancelReservation(item.reservationId)" [disabled]="!item.status" >Cancel Reservation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card my-5">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold mb-3">{{ todayAll }}</h5>
+            <p class="card-text">Today's Reservation</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getTodayReservation()">Get Details</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold mb-3">{{ all }}</h5>
+            <p class="card-text">All Reservation
+            </p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllReservation()">Get Details</button>
+          </div>
+        </div>
+        
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold mb-3">{{ todayEarning }}</h5>
+            <p class="card-text">Today's Earning</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTodayOrders()">Get Details</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold mb-3">{{ allEarning }}</h5>
+            <p class="card-text">All Earning</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()">Action</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  
+    <!-- <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold mb-3">{{ pending }}</h5>
+            <p class="card-text">Pending Orders</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getPendingOrders()">Action</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  
+    <!-- <div class="row">
+      <div class="col-md-12 btn-take-order">
+        <button class="btn btn-primary" (click)="goto()">Take Order</button>
+      </div>
+    </div>
+  </div> -->
+  
+  <!-- Inside your Angular component HTML file -->
+  
+  <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Reservations </h1>
+          <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Payent Ststud</th>
+                <th>Table Reserved</th>
+                <th>Table Capacity</th>
+
+                <th>reservationDate Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of reservation">
+                <td>{{ order.reservationId }}</td>
+                <td>{{order.status?"Reserved":"Cancelled"}}</td>
+                <td>{{ order.tableNo }}</td>
+                <td>{{ order.capacity }}</td>
+
+                <td>{{order.reservationDate}}</td>
+                <td>
+                  <button class="btn btn-secondary" (click)="viewReservation(order.reservationId)"> Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="closebutton" (click)="onCloseModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
