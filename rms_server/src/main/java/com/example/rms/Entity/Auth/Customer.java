@@ -6,7 +6,7 @@ import com.example.rms.Entity.Table_Reservation.Reservation;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 @Entity
 @Table(name = "customer_table",uniqueConstraints = { @UniqueConstraint(columnNames = { "customer_phone" }) })

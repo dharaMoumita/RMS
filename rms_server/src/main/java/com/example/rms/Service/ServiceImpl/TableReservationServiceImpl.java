@@ -143,16 +143,15 @@ public class TableReservationServiceImpl implements TableReservationService {
         return tableRepo.findALlTablesByCapacity(capacity);
     }
 
-    public List<Tables> findByDate(Date date){
-//        Set<Tables> reservedtablesSet=new HashSet<>();
-        List<Tables> availbleTables=tableRepo.findAll();
+    public List<ReservationDetailsDTO> findByDate(Date date){
+        List<ReservationDetailsDTO> reservedtablesSet=new ArrayList<>();
         List<Reservation> reservationList=reservationRepo.findReservedDate(date);
             reservationList.forEach((item)->{
-                availbleTables.remove(item.getTables_details());
+                    reservedtablesSet.add(ReservationtoReservationDetails(item));
             });
-        System.out.println(availbleTables);
+//        System.out.println(availbleTables);
 
-        return availbleTables;
+        return reservedtablesSet;
 
     }
 
@@ -218,6 +217,21 @@ public class TableReservationServiceImpl implements TableReservationService {
             }
         });
         return  reservationList;
+    }
+
+    @Override
+    public List<ReservationDetailsDTO> getReservationByDateUser() {
+        List<ReservationDetailsDTO> reservationDetailsDTOList=new ArrayList<>();
+        long millis=System.currentTimeMillis();
+        Date date=new Date(millis);
+
+       List<Reservation> reservationList= reservationRepo.findReservedDate(date);
+       reservationList.forEach(ele->{
+           if(ele.getUser()==currentUser()) {
+               reservationDetailsDTOList.add(ReservationtoReservationDetails(ele));
+           }
+       });
+       return reservationDetailsDTOList;
     }
 
     @Override

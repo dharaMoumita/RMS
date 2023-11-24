@@ -55,8 +55,8 @@ public class TableReservationController {
     }
 
 
-    @GetMapping("/availableTables/date/{date}")
-    public List<Tables> getTablesByDate(@PathVariable String date)throws  Exception{
+    @GetMapping("/reserveTable/date/{date}")
+    public List<ReservationDetailsDTO> getReservationByDate(@PathVariable String date)throws  Exception{
         return tableReservationService.findByDate(Date.valueOf(date));
     }
 
@@ -65,6 +65,9 @@ public class TableReservationController {
         System.out.println(tableReserveDTO);
         return tableReservationService.reserveTableById(id,tableReserveDTO);
     }
-
+    @GetMapping("/reserveTable/date")
+    public List<ReservationDetailsDTO> getReservationByDate(){
+      return   tableReservationService.getReservationByDateUser();
+    }
 
 }

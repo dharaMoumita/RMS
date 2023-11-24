@@ -19,6 +19,7 @@ public class CustomerController {
 
     @PostMapping("/customer")
     public int addCustomer(@RequestBody CustomerDTO customerDTO){
+        System.out.println("........................."+customerDTO);
         return customerService.addCustomer(customerDTO).getId();
     }
 

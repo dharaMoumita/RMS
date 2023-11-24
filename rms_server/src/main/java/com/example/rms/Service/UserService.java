@@ -18,4 +18,5 @@ public interface UserService {
     public UserDTO updateUser(int id, String userDTO) throws Exception;
 
 
+    UserDTO getCurrentUser();
 }

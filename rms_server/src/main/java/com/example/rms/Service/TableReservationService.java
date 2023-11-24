@@ -19,11 +19,13 @@ public interface TableReservationService {
 
     public List<Tables> getByCapacity(int capacity);
 
-    public List<Tables> findByDate(Date date);
+    public List<ReservationDetailsDTO> findByDate(Date date);
     public ReservationDetailsDTO getByReservationId(int id);
         List<Tables> tablesAvailable(TableReserveDTO tableReserveDTO);
 
     int reserveTableById(int id, TableReserveDTO tableReserveDTO) throws Exception;
 
     List<ReservationDetailsDTO> getReservationByUser();
+
+    List<ReservationDetailsDTO> getReservationByDateUser();
 }

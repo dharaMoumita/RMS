@@ -34,6 +34,12 @@ public class UserController {
         return  userService.getUser(id);
     }
 
+    @GetMapping("/user/current")
+    public int getCurrentUser(){
+        System.out.println("..........................."+userService.getCurrentUser().getId());
+        return userService.getCurrentUser().getId();
+    }
+
     @GetMapping("/user")
     public List<UserDTO> getAllUser(){
         return userService.getAllUsers();

@@ -1,6 +1,6 @@
 package com.example.rms.DTO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CustomerDTO {
 
@@ -8,7 +8,7 @@ public class CustomerDTO {
     private String email;
     private String customerName;
     private String phone;
-    private Date birthdate;
+    private String birthdate;
 
     public int getId() {
         return id;
@@ -34,11 +34,12 @@ public class CustomerDTO {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -48,5 +49,16 @@ public class CustomerDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthdate=" + birthdate +
+                '}';
     }
 }

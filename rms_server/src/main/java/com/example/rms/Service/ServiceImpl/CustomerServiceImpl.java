@@ -7,6 +7,7 @@ import com.example.rms.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
     private Customer CustomerDTOtoCustomer(CustomerDTO customerDTO){
         Customer customer=new Customer();
         customer.setCustomerName(customerDTO.getCustomerName());
-        customer.setBirthdate(customerDTO.getBirthdate());
+        customer.setBirthdate(Date.valueOf(customerDTO.getBirthdate()));
         customer.setPhone(customerDTO.getPhone());
         customer.setEmail(customerDTO.getEmail());
         return customer;
@@ -75,7 +76,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     private CustomerDTO CustomertoCustomerDTO(Customer customer){
         CustomerDTO customerDTO=new CustomerDTO();
-        customerDTO.setBirthdate(customer.getBirthdate());
+        if(customer.getBirthdate()!=null){
+        customerDTO.setBirthdate(customer.getBirthdate().toString());
+        }
         customerDTO.setId(customer.getId());
         customerDTO.setCustomerName(customer.getCustomerName());
         customerDTO.setPhone(customer.getPhone());
