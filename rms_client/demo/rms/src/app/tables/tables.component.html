@@ -1,14 +1,41 @@
 <div class="container mt-4">
   <app-table-header (newItemEvent)="showTables($event)"></app-table-header>
-  <div class="row">
+  <div class="row" *ngIf="tableAvailable.length==0">
+    <p class="fw-bold">Please enter date and Capacity to find desired table.</p>
     <div class="col-md-4" *ngFor="let item of tableList">
-      <div class="card mb-4">
+      <div class="card mb-4"   [ngClass]="{'unavailable': !(getColor(item)==true) }"
+      >
         <div class="card-body">
           <h5 class="card-title">Table No. {{ item.tableNo }}</h5>
           <p class="card-text">Capacity: {{ item.capacity }}</p>
-          <button class="btn btn-success" (click)="remove(item.id)">Reserve</button>
+          <button class="btn btn-success" *ngIf="getColor(item)==true"(click)="remove(item.id)">Reserve</button>
+          <button class="btn btn-danger" disabled *ngIf="getColor(item)==false"(click)="remove(item.id)">Unavailable</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="tableAvailable.length!=0">
+    <p class="fw-bold">Check for the available tables</p>
+    
+    <div class="col-md-4" *ngFor="let item of tableList">
+      <div class="card mb-4"   [ngClass]="{'unavailable': !(getColor(item)==true) }"
+      >
+        <div class="card-body">
+          <h5 class="card-title">Table No. {{ item.tableNo }}</h5>
+          <p class="card-text">Capacity: {{ item.capacity }}</p>
+          <button class="btn btn-success" *ngIf="getColor(item)==true"(click)="remove(item.id)">Reserve</button>
+          <button class="btn btn-danger" disabled *ngIf="getColor(item)==false"(click)="remove(item.id)">Unavailable</button>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+

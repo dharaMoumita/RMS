@@ -8,10 +8,10 @@
     
 } */
 .custom-navbar{
-    border-bottom: black solid;
+    border-bottom: 2px black solid;
     opacity: 0.8;
     
   }
 .btn{
-    background-color: gray;
+    background-color: white;
 }

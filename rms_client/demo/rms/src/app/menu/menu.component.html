@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4" *ngFor="let item of food | async">
+    <div class="col-md-4" *ngFor="let item of food | async;index as i">
       <div class="card mb-4">
         <!-- Example image -->
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Food Image">
+        <img src="../../assets/food{{i}}.jpg" class="card-img-top" alt="Food Image">
 
         <div class="card-body">
           <!-- Display data properties in the card -->
@@ -15,7 +15,7 @@
               <button class="btn btn-sm btn-outline-secondary" (click)="add(item.id)">ADD</button>
               <button class="btn btn-sm btn-outline-secondary" (click)="remove(item.id)">Remove</button>
             </div>
-            <small class="text-muted">{{ getQuantity(item.id) }}</small>
+            <small *ngIf="getQuantity(item.id)!=0" class="text-muted fw-bold h2">{{ getQuantity(item.id) }}</small>
           </div>
         </div>
       </div>

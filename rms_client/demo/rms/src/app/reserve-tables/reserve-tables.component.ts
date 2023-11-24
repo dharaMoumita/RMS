@@ -49,7 +49,7 @@ export class ReserveTablesComponent implements OnInit {
     this.reserveDetails.customerId=this.customerService.getCustomerRegistration();
     delete this.reserveDetails['tId'];
     console.log(this.reserveDetails);
-    
+    if(confirm("Confirm Reservation")){
     this.taleService
         .makeReservation(this.id, this.reserveDetails)
         .toPromise().then((result) => {
@@ -60,7 +60,11 @@ export class ReserveTablesComponent implements OnInit {
 
         });
 
+  }else{
+    this.router.navigate(['tables']);
+    alert("select desired table")
   }
+}
   
 
 }

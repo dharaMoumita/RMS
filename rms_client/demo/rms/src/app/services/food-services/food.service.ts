@@ -40,6 +40,9 @@ export class FoodService {
     return this.httpClient.get<Array<any>>(this.PATH_OF_API+"/orderFood/user");
   }
 
-
+  public getOrderById(id:number):Observable<any>{
+    return this.httpClient
+      .get<any>(this.PATH_OF_API + '/orderFood/' + id)
+  }
 
 }

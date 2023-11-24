@@ -26,6 +26,8 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
 import { CustomerCheckComponent } from './customer-check/customer-check.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { OrderComponent } from './order/order.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     TableHeaderComponent,
     TableBillComponent,
     ReservationListComponent,
-    CustomerCheckComponent
+    CustomerCheckComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { MatDialogModule } from '@angular/material/dialog';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

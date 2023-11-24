@@ -1,24 +1,33 @@
-/* Custom CSS for Reservation Cards */
-.reservation-card {
-    height: 250px; /* Set a fixed height for all cards */
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden; /* Hide content that exceeds the height */
-  }
-  .card{
-  margin:20px;
-  }
-  .reservation-card .card-body {
-    padding: 20px;
-    height: 100%; /* Ensure the body takes the full height of the card */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Vertically align content within the fixed height */
-  }
-  .row{
-    margin: 20px;
-  }
-  
+.custom-dialog-class {
+  margin: 50px; 
+  padding: 45px; 
+}
 
-  
+.btn-take-order {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.row{
+  margin-top: 50px;
+}
+.card-title{
+  font-size: 60px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.card-text{
+  margin-top:50px;
+}
+.modal-open {
+  overflow: auto; /* This prevents the page from scrolling when the modal is open */
+}
+.card {
+  margin-bottom: 20px;
+  height: 220px; 
+  box-sizing: border-box;
+  box-shadow: 5px 5px 5px 5px grey;
+}
+.card-body {
+  height: 100%;
+}

@@ -1,0 +1,41 @@
+<div class="container">
+<div class="card">
+    <div class="card-header">
+      <h2 class="card-title text-center fw-bold">Order Details</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Customer Name:</strong> {{ order.customerName }}</p>
+      <p><strong>Customer Phone:</strong> {{ order.customerPhone }}</p>
+      <p><strong>Ordered Date:</strong> {{ order.orderedDate }}</p>
+      <p *ngIf="!order.payment"><strong>Payment Status:</strong> Pending</p>
+      <p *ngIf="order.payment"><strong>Payment Status:</strong> Completed</p>
+
+      <p><strong>Total Price:</strong> {{ order.totalPrice }}</p>
+  
+      <hr>
+  
+      <h3 class="text-center fw-bold">Order Items</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of order.orderDetails">
+            <td>{{ detail.foodItem.name }}</td>
+            <td>{{ detail.quantity }}</td>
+            <td>{{ detail.price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-secondary my-5" *ngIf="!order.payment"(click)="confirmPayment()">Confirm Payment</button>
+    <button class="btn btn-secondary my-5 mx-2" (click)="generateBill()">Generate Bill</button>
+
+  </div>
+  </div>

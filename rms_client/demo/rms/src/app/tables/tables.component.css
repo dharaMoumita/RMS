@@ -2,5 +2,18 @@
     margin-top: 50px;
 }
 .row{
-    margin-top: 30px;
+    margin: 50px;
 }
+.card{
+    height:150px;
+    margin: 50px;
+}
+.highlight {
+    font-weight: bold;
+    color: red;
+  }
+  
+  .unavailable{
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }

@@ -14,6 +14,8 @@ import { CustomerCheckComponent } from '../customer-check/customer-check.compone
 })
 export class TablesComponent implements OnInit {
   tableList: TablePayload[] = [];
+  tableAvailable: TablePayload[] = [];
+
   capacity: number;
   date: Date;
   tableReserveDetails: TableReservePayload;
@@ -31,6 +33,7 @@ export class TablesComponent implements OnInit {
 
       this.tableList = res;
     });
+
   }
 
   getData() {
@@ -44,8 +47,15 @@ export class TablesComponent implements OnInit {
     tableData: TablePayload[];
     inputData: TableReservePayload;
   }) {
+    this.taleService.getAllTables().subscribe((res) => {
+      console.log(res);
+
+      this.tableList = res;
+    });
+  
+
     console.log(details.tableData);
-    this.tableList = details.tableData;
+    this.tableAvailable = details.tableData;
     this.tableReserveDetails = details.inputData;
     console.log(this.tableList);
   }
@@ -79,6 +89,13 @@ export class TablesComponent implements OnInit {
     //       console.log(result);
     //     });
     // }
+  }
+  getColor(table:TablePayload):any{
+    const found= this.tableAvailable.find(
+      t=>
+      t.id==table.id
+    );
+    return found?true:false;
   }
 
   

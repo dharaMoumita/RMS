@@ -17,6 +17,7 @@ import { ReserveTablesComponent } from './reserve-tables/reserve-tables.componen
 import { TableBillComponent } from './table-bill/table-bill.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
 import { CustomerCheckComponent } from './customer-check/customer-check.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -48,8 +49,9 @@ const routes: Routes = [
   { path: 'tables', component: TablesComponent },
   { path: 'reserve-tables', component: ReserveTablesComponent },
   { path: 'table-bill', component: TableBillComponent ,canDeactivate: [CanDeactivateGuard]},
-  { path: 'reservation-list', component: ReservationListComponent },
+  { path: 'reservation-list/:id', component: ReservationListComponent },
   { path: 'customer-check', component: CustomerCheckComponent },
+  {path:'order/:id',component:OrderComponent}
 
 ];
 

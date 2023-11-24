@@ -24,7 +24,7 @@ custId: any;
   register(cusomerForm: NgForm) {
     if(cusomerForm.valid){
       console.log(cusomerForm.value);
-      this.customerPayload=new CustomerPayload(cusomerForm.value.email,cusomerForm.value.username,cusomerForm.value.phone);
+      this.customerPayload=new CustomerPayload(cusomerForm.value.email,cusomerForm.value.firstName+" "+cusomerForm.value.lastName,cusomerForm.value.phone ,cusomerForm.value.gender,cusomerForm.value.birthdate);
       console.log(this.customerPayload);
       
       // this.customerPayload.birtdate=cusomerForm.value.birthdate.;

@@ -47,6 +47,10 @@ export class UserService {
     return this.httpclient.get<any>(this.PATH_OF_API+"/user/"+userId);
   }
 
+  public getCurrentUser():Observable<any>{
+    return this.httpclient.get<any>(this.PATH_OF_API+"/user/current");
+  }
+
   
 
   public roleMatch(allowedRoles : Array<string>): boolean {

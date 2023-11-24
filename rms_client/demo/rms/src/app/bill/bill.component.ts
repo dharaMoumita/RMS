@@ -93,21 +93,16 @@ export class BillComponent implements OnInit, CanComponentDeactivate {
 
   confirmExit() {
     this.hasUnsavedChanges = true;
-    this.foodService
-      .SetPayment(this.currentOrderId)
-      .toPromise()
-      .then(() => {
         localStorage.removeItem('currentOrder');
         this.orderDetails = this.orderDetails.splice(
           0,
           this.orderDetails.length
         );
-      })
-      .finally(() => {
-        this.customerSErvice.setCustomerRegistration(null);
+    
+        // this.customerSErvice.setCustomerRegistration(null);
 
         this.routr.navigate(['menu']);
-      });
+    
   }
 
   generatePDF() {
