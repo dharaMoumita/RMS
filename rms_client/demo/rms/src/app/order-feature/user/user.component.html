@@ -1,19 +1,26 @@
-<div class="container">
+<div class="background">
+  <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-3">
+      <div class="card mb-4">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold mb-3">{{ todayOrders }}</h5>
-          <p class="card-text">Today's Orders</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ todayOrders }}</h5>
+            <img src="../../../assets/cutlery.jpg" alt="" style="height: 180px;" class="rounded-circle">
+          </div>
+          <p class="card-text" style="font-size: 25px;">Today Orders</p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer ">
           <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getTodayOrders()">Get Details</button>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold mb-3">{{ allOrders }}</h5>
-          <p class="card-text">All Orders</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ allOrders }}</h5>
+            <img src="../../../assets/cutlery.jpg" alt="" style="height: 180px;" class="rounded-circle">
+          </div>
+          <p class="card-text" style="font-size: 25px;">All Orders</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()">Get Details</button>
@@ -23,8 +30,12 @@
     <div class="col-md-6">
       <div class="card mb-3">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold mb-3">{{ todayEarning }}</h5>
-          <p class="card-text">Today's Earning</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ todayEarning }}</h5>
+            <img src="../../../assets/mon.jpg" alt="" style="height: 180px;">
+          </div>
+  
+          <p class="card-text" style="font-size: 25px;">Today's Earning</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTodayOrders()">Get Details</button>
@@ -32,8 +43,12 @@
       </div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold mb-3">{{ allEarning}}</h5>
-          <p class="card-text">All Earning</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ allEarning }}</h5>
+            <img src="../../../assets/mon.jpg" alt="" style="height: 180px;">
+          </div>
+  
+          <p class="card-text" style="font-size: 25px;">All Earning</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllOrders()">Get Details </button>
@@ -46,21 +61,27 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold mb-3">{{ pending }}</h5>
-          <p class="card-text">Pending Orders</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ pending }}</h5>
+            <img src="../../../assets/pending.jpg" alt="" style="height: 150px;">
+          </div>
+  
+          <p class="card-text" style="font-size: 25px; margin-bottom: 0px;">Pending Orders</p>
         </div>
+
         <div class="card-footer">
           <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getPendingOrders()">Action</button>
         </div>
       </div>
     </div>
-  </div>
 
   <div class="row">
     <div class="col-md-12 btn-take-order">
       <button class="btn btn-secondary" (click)="goto()">Take Order</button>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 

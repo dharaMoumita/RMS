@@ -22,22 +22,29 @@
   
    -->
 
-
+<div class="background">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="card my-5">
           <div class="card-body">
-            <h5 class="card-title font-weight-bold mb-3">{{ todayAll }}</h5>
-            <p class="card-text">Today's Reservation</p>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title font-weight-bold">{{ todayAll }}</h5>
+              <img src="../../../assets/calender.jpg" style="height: 200px; width: 250px;">
           </div>
+          <p class="card-text">Today ALl Reservation
+          </p>
+
           <div class="card-footer">
             <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getTodayReservation()">Get Details</button>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title font-weight-bold mb-3">{{ all }}</h5>
+            <div class="d-flex justify-content-between">
+            <h5 class="card-title font-weight-bold">{{ all }}</h5>
+            <img src="../../../assets/tables.jpg" style="height: 200px; width: 250px;">
+          </div>
             <p class="card-text">All Reservation
             </p>
           </div>
@@ -68,7 +75,7 @@
         </div>
       </div> -->
     </div>
-  
+  </div>
     <!-- <div class="row mt-3">
       <div class="col-md-6 offset-md-3">
         <div class="card">

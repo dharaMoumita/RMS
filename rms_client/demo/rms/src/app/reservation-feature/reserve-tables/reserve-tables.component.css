@@ -19,6 +19,10 @@
   .row{
     margin: 20px;
   }
-  
+  .background{
+    background-color: #F1EFEF;
+    height: 150%;
+    padding: 50px;
+  }
 
   

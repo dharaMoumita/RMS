@@ -1,8 +1,8 @@
 .container{
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 .card{
-    box-shadow: 2px 2px 2px 2px black;
+    box-shadow: 2px 2px 2px 2px #7D7C7C;
     padding: 12px;
     height: 400px;
     width:400px;
@@ -13,4 +13,7 @@ img{
     height: 250px;
     width: 350px;
     margin-left: 20px;
+}
+.background{
+    background-color: #CCC8AA;
 }

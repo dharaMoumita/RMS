@@ -87,6 +87,7 @@ getTodayOrders(){
   this.orders=this.today;
 }
 getAllOrders(){
+  this.orders=[];
   this.orders=this.all;
 }
 viewOrder(orderId:number){

@@ -1,0 +1,14 @@
+.container{
+     padding-top: 50px; 
+}
+.card{
+    border-radius: 2px;
+    border-color: black;
+    box-shadow: 5px 5px 5px 5px gray;
+    width: 100%;
+}
+
+.background{
+    background-color: #CCC8AA;
+    height: 1000px;
+}
