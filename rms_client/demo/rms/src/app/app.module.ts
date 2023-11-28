@@ -28,7 +28,8 @@ import { AdminComponent } from './reservation-feature/admin/admin.component';
 import { ReservationListComponent } from './reservation-feature/reservation-list/reservation-list.component';
 import { ReserveTablesComponent } from './reservation-feature/reserve-tables/reserve-tables.component';
 import { TablesComponent } from './reservation-feature/tables/tables.component';
-
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './auth/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { TablesComponent } from './reservation-feature/tables/tables.component';
     TableBillComponent,
     ReservationListComponent,
     CustomerCheckComponent,
-    OrderComponent
+    OrderComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,17 +62,21 @@ import { TablesComponent } from './reservation-feature/tables/tables.component';
     RouterModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
-
+    MatDialogModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
-    DatePipe
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

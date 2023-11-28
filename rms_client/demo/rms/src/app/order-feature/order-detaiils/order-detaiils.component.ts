@@ -37,6 +37,7 @@ export class OrderDetaiilsComponent implements OnInit {
     }
 
     this.orderDetails = this.orderDetailSErvice.getOrderDetail(this.orderFoodQuantity);
+    console.log(this.orderDetails);
     
   }
 
@@ -51,8 +52,8 @@ export class OrderDetaiilsComponent implements OnInit {
     //   this.orderId=res;
     // });
     // console.log(this.orderId);
-    console.log(typeof(OrderDTO.date));
-    
+    console.log(OrderDTO);
+    if(confirm("Confirm Order")){
     this.foodService.addOrder(OrderDTO).then(response=>{
       console.log(response);
       this.orderId=response;
@@ -62,6 +63,9 @@ export class OrderDetaiilsComponent implements OnInit {
     }).finally( ()=>{
       this.orderFoodService.removeAllProduct()
       this.route.navigate(["bill"]);
-    })
+    })}
+    else{
+      this.route.navigate(['menu']);
+    }
     }
 }
