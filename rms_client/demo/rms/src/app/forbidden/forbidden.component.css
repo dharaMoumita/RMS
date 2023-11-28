@@ -1,0 +1,24 @@
+body {
+    background-color: #CCC8AA;
+  }
+  .forbidden-section {
+    margin-top: 100px;
+    text-align: center;
+  }
+  .forbidden-text {
+    font-size: 5rem;
+    color: #dc3545;
+    margin-bottom: 20px;
+  }
+  .back-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .back-link a:hover {
+    color: #0056b3;
+  }
+  .error-icon {
+    font-size: 8rem;
+    color: #dc3545;
+  }

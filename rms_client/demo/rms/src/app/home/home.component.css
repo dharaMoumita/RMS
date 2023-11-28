@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 900px;
+    min-height: 800px;
   }
   
   #home-section .dark-overlay {
@@ -70,4 +70,9 @@ h1,p{
 }
 #home-section{
   background-color: #CCC8AA;
+}
+.background{
+  background-color: #CCC8AA;
+  height: 150%;
+  padding: 50px;
 }

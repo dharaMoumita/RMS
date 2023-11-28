@@ -36,23 +36,54 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'menu', component: MenuComponent    , data: { roles: ['Waiter'] },    canActivate: [AuthGuard],
-
-},
-  { path: 'order-detaiils', component: OrderDetaiilsComponent,data: { roles: ['Waiter'] },    canActivate: [AuthGuard], },
+  {
+    path: 'menu',
+    component: MenuComponent,
+    data: { roles: ['Waiter'] },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'order-detaiils',
+    component: OrderDetaiilsComponent,
+    data: { roles: ['Waiter'] },
+    canActivate: [AuthGuard],
+  },
   { path: 'customer-registration', component: CustomerRegistrationComponent },
   {
     path: 'bill',
     component: BillComponent,
     canDeactivate: [CanDeactivateGuard],
   },
-  { path: 'tables', component: TablesComponent },
-  { path: 'reserve-tables', component: ReserveTablesComponent },
-  { path: 'table-bill', component: TableBillComponent ,canDeactivate: [CanDeactivateGuard]},
-  { path: 'reservation-list/:id', component: ReservationListComponent },
+  {
+    path: 'tables',
+    component: TablesComponent,
+    data: { roles: ['Manager'] },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'reserve-tables',
+    component: ReserveTablesComponent,
+    data: { roles: ['Manager'] },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'table-bill',
+    component: TableBillComponent,
+    canDeactivate: [CanDeactivateGuard],
+  },
+  {
+    path: 'reservation-list/:id',
+    component: ReservationListComponent,
+    data: { roles: ['Manager'] },
+    canActivate: [AuthGuard],
+  },
   { path: 'customer-check', component: CustomerCheckComponent },
-  {path:'order/:id',component:OrderComponent}
-
+  {
+    path: 'order/:id',
+    component: OrderComponent,
+    data: { roles: ['Waiter'] },
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
