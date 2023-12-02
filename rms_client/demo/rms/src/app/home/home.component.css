@@ -76,3 +76,12 @@ h1,p{
   height: 150%;
   padding: 50px;
 }
+
+
+@media only screen and (max-width: 1200px) {
+
+
+  strong{
+    margin: 10px;
+  }
+}

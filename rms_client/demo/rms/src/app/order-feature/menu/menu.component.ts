@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FoodService } from '../../services/food-services/food.service';
 import { Observable } from 'rxjs';
 import { FoodPayload } from '../../FoodPayload';
@@ -12,6 +12,7 @@ import { CustomerServiceService } from '../../services/customer-services/custome
   styleUrls: ['./menu.component.css']
 })
 export default class MenuComponent implements OnInit{
+  selectedFood:any={};
 
   orderItem:number;
   itemQuantity:number=0;
@@ -57,8 +58,24 @@ constructor(private foodService:FoodService,private orderFoodService:OrderFoodSe
     this.itemQuantity=this.orderFoodService.getQuantity(item_id);
     return this.itemQuantity; 
   }
+  details(){
 
 
+    this.onCloseModal();
+
+  }
+  @ViewChild('closebutton') closebutton;
+
+  onCloseModal() {
+    this.closebutton.nativeElement.click();
+  }
+  showFoodDetails(data:any){
+    this.selectedFood.food=data.id;
+    this.selectedFood.index=data.index;
+    console.log(this.selectedFood);
+    
+
+  }
 
 
 }

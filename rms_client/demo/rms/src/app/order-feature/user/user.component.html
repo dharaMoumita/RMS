@@ -1,5 +1,6 @@
 <div class="background">
   <div class="container">
+          
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-4">
@@ -85,17 +86,24 @@
 </div>
 
 
-<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+<div class="modal bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" style="width: 1000px;height: 800px;">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Pending Orders</h1>
+
+        <h1 class="modal-title text-center" id="exampleModalLabel"> Orders</h1>
         <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
       </div>
       <div class="modal-body">
+        <app-order-header (newItemEvent)="showOrders($event)">  </app-order-header>
+
         <table class="table">
           <thead>
             <tr>
+              <th>No.</th>
               <th>ID</th>
               <th>Payent Ststud</th>
               <th>Price</th>
@@ -103,13 +111,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let order of orders">
+            <tr *ngFor="let order of orders;index as i">
+              <td>{{i+1}}</td>
               <td>{{ order.id }}</td>
               <td>{{order.payment?"Paid":"Pending"}}</td>
               <td>{{ order.price }}</td>
               <td>{{order.date}}</td>
               <td>
-                <button class="btn btn-primary" (click)="viewOrder(order.id)">View Details</button>
+                <button class="btn btn-secondary" (click)="viewOrder(order.id)">View Details</button>
               </td>
             </tr>
           </tbody>

@@ -30,6 +30,8 @@ import { ReserveTablesComponent } from './reservation-feature/reserve-tables/res
 import { TablesComponent } from './reservation-feature/tables/tables.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './auth/loading.interceptor';
+import { OrderHeaderComponent } from './order-feature/order-header/order-header.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { LoadingInterceptor } from './auth/loading.interceptor';
     CustomerCheckComponent,
     OrderComponent,
     SpinnerComponent,
+    OrderHeaderComponent,
+    BackButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,4 +45,13 @@ export class FoodService {
       .get<any>(this.PATH_OF_API + '/orderFood/' + id)
   }
 
+  public updateOrder(OrderDTO:any):Observable<any>{
+    return this.httpClient.put<any>(this.PATH_OF_API+'/orderFood',OrderDTO);
+  }
+
+  public getOrderDatewise(date:any):Observable<Array<any>>{
+    return this.httpClient.get<Array<any>>(this.PATH_OF_API+"/orderFood/dateWise/"+date);
+
+  }
+
 }

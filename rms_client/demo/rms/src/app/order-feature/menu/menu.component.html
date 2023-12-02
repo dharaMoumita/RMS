@@ -4,23 +4,67 @@
     <div class="col-md-4" *ngFor="let item of food | async;index as i">
       <div class="card mb-4">
         <!-- Example image -->
-        <img src="../../assets/food{{i}}.jpg" class="card-img-top" alt="Food Image">
+        <button  class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showFoodDetails({id:item,index:i})">        
+          <img src="../../assets/food{{i}}.jpg" class="card-img-top" alt="Food Image">
+        </button>
 
         <div class="card-body">
           <!-- Display data properties in the card -->
-          <h5 class="card-text">{{ item.name }}</h5>
-          <p class="card-title">{{ item.desc }}</p>
-
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-title">RS. {{ item.price }}</p>
+        </div>
+          <div class="d-flex justify-content-between align-items-end mt-4">
             <div class="btn-group">
               <button class="btn btn-sm btn-outline-secondary fw-bold display-1" (click)="add(item.id)">  +  </button>
               <button class="btn btn-sm btn-outline-secondary fw-bold display-1" (click)="remove(item.id)">  -  </button>
             </div>
-            <small *ngIf="getQuantity(item.id)!=0" class="text-muted fw-bold h2">{{ getQuantity(item.id) }}</small>
+            <small *ngIf="getQuantity(item.id)!=0" class="fw-bold h5">{{ getQuantity(item.id) }}</small>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+<div class="modal bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" style="width: 1000px;height: 800px;">
+    <div class="modal-content" >
+      <div class="modal-header " style="background-color: rgb(92, 90, 89);color: white;">
+
+        <p class="modal-title text-center display-6" id="exampleModalLabel"> Details</p>
+        <button  type="button" class="btn-close btn-light"#closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
+      </div>
+      <div class="modal-body" style="background-color: antiquewhite;">
+        <div *ngIf="selectedFood">
+          <div class="col-md-4 " >
+            <img style="border: 2px black; box-shadow:25px 25px black;"[src]="'../../assets/food' + selectedFood.index + '.jpg'" class="card-img-top " style="width: 380px; margin-left: 180px;"alt="Food Image">
+          </div>
+          <div class="col-md-8">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12">
+                <h3 class="my-3 fw-bold" style="margin-left: 21rem; ">{{ selectedFood.food?.name }}</h3>
+              </div>
+              <div class="col-md-12">
+                <p class="my-3 mx-2" style="margin-left: 21rem;">Price: {{ selectedFood.food?.price }}</p>
+                <p class="my-3 mx-2" style="margin-left: 21rem;">Time Taken: {{ selectedFood.food?.minutes }} minutes</p>
+              </div>
+              <div class="col-md-12 mt-3">
+                <div class="border mb-2 p-2">
+                  <p>{{ selectedFood.food?.desc }}</p>
+                  <!-- Larger box for description -->
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+      <div class="modal-footer" >
+        <button type="button" style="background-color: rgb(92, 90, 89); color: white;"class="btn" id="closebutton" (click)="onCloseModal()">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

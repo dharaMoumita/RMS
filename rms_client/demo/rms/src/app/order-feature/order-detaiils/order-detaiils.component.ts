@@ -19,6 +19,7 @@ export class OrderDetaiilsComponent implements OnInit {
   public orderDetails: OrderDetailsPayload[] = [];
   public totalPrice: any;
   public orderId:any;
+  public OrderDTO:any={};
   constructor(
     private orderFoodService: OrderFoodService,
     private foodService: FoodService,
@@ -42,7 +43,7 @@ export class OrderDetaiilsComponent implements OnInit {
   }
 
   addOrder() {
-    const OrderDTO = {
+    this.OrderDTO = {
       date: new Date(),
       customerId:this.customerService.getCustomerRegistration(),
       orderFoodDTOList: this.orderFoodQuantity,
@@ -52,9 +53,13 @@ export class OrderDetaiilsComponent implements OnInit {
     //   this.orderId=res;
     // });
     // console.log(this.orderId);
-    console.log(OrderDTO);
+    if(localStorage.getItem('currentOrder')!=null){
+      this.OrderDTO.id=+JSON.parse(localStorage.getItem('currentOrder'));
+    }
+    console.log(this.OrderDTO);
+    if(!('id' in this.OrderDTO) ){
     if(confirm("Confirm Order")){
-    this.foodService.addOrder(OrderDTO).then(response=>{
+    this.foodService.addOrder(this.OrderDTO).then(response=>{
       console.log(response);
       this.orderId=response;
       localStorage.setItem("currentOrder", JSON.stringify(this.orderId));
@@ -67,5 +72,25 @@ export class OrderDetaiilsComponent implements OnInit {
     else{
       this.route.navigate(['menu']);
     }
+    
+    }else{
+      
+      if(confirm("Confirm Order")){
+        this.foodService.updateOrder(this.OrderDTO).toPromise().then(response=>{
+          console.log(response);
+          this.orderId=response;
+          localStorage.setItem("currentOrder", JSON.stringify(this.orderId));
+    
+          
+        }).finally( ()=>{
+          this.orderFoodService.removeAllProduct()
+          this.route.navigate(["bill"]);
+        })}
+        else{
+          this.route.navigate(['menu']);
+        }
+      
+
     }
+  }
 }
