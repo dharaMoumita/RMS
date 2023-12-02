@@ -17,6 +17,14 @@ public class OrderFoodDTO {
         return quantity;
     }
 
+    @Override
+    public String toString() {
+        return "OrderFoodDTO{" +
+                "food_id=" + food_id +
+                ", quantity=" + quantity +
+                '}';
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }

@@ -43,4 +43,14 @@ public class OrderFoodController {
        return orderFoodService.getallOrderByDateUser();
     }
 
+
+    @PutMapping("/orderFood")
+    public int updateOrder(@RequestBody OrderDTO orderDTO){
+        return orderFoodService.updateOrder(orderDTO);
+    }
+
+    @GetMapping("/orderFood/dateWise/{date}")
+    public List<OrderDTO> getOrderDateWise(@PathVariable String date){
+        return orderFoodService.getOrderDateWise(date);
+    }
 }

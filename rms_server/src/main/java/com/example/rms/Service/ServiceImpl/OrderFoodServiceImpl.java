@@ -17,6 +17,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class OrderFoodServiceImpl implements OrderFoodService {
 
@@ -54,6 +56,65 @@ public class OrderFoodServiceImpl implements OrderFoodService {
         System.out.println("..................................................."+order);
         System.out.println("...................................................."+order.getOrders());
         return order.getId();
+    }
+
+
+    public int updateOrder(OrderDTO orderDTO){
+        OrderEntity orderEntity=orderRepo.findById(orderDTO.getId()).get();
+        List<OrderFoodDTO> orderFoodDTOList=orderDTO.getOrderFoodDTOList();
+        List<OrderFoodEntity> orderFoodEntityList=new ArrayList<>();
+        double price=0.0;
+         price=orderEntity.getTotal();
+        List<OrderFoodEntity> orderFoodEntities=orderEntity.getOrders();
+        if(!orderFoodEntities.isEmpty()){
+       for (int k=0 ;k<orderFoodDTOList.size();k++){
+           OrderFoodDTO i=orderFoodDTOList.get(k);
+           for(int j=0;j<orderFoodEntities.size();j++){
+               OrderFoodEntity ele=orderFoodEntities.get(j);
+               if(ele.getFood_details().getId()==i.getFood_id()){
+                   ele.setQuantity(ele.getQuantity()+i.getQuantity());
+                   price+=ele.getFood_details().getPrice()*i.getQuantity();
+                   System.out.println("***********************************"+i.getFood_id());
+                   System.out.println("**************************"+ele.getFood_details().getId());
+//                   orderFoodDTOList.remove(i);
+                   orderFoodRepo.save(ele);
+
+
+               }
+           }
+           System.out.println("************************************************************"+i.toString());
+       }}
+        System.out.println("\n"+price);
+
+        List<OrderFoodDTO> filteredList = orderFoodDTOList.stream()
+                .filter(empl -> orderFoodEntities.stream()
+                        .allMatch(dept ->
+                                !(dept.getFood_details().getId()== empl.getFood_id())))
+                .collect(Collectors.toList());
+        System.out.println(filteredList);
+       if(!filteredList.isEmpty()) {
+           for (OrderFoodDTO i : filteredList) {
+
+               OrderFoodEntity orderFoodEntity = new OrderFoodEntity();
+               FoodEntity food = foodRepo.findById(i.getFood_id()).get();
+               int quantity = i.getQuantity();
+               price += food.getPrice() * quantity;
+               orderFoodEntity.setFood_details(food);
+               orderFoodEntity.setQuantity(quantity);
+               orderFoodEntity.setOrder_details(orderEntity);
+               orderFoodEntityList.add(orderFoodEntity);
+//            orderFoodRepo.save(orderFoodEntity);
+           }
+       }
+        System.out.println(price);
+        orderEntity.setTotal(price);
+        orderEntity.setPayment(false);
+        orderEntity.setOrders(orderFoodEntityList);
+        OrderEntity order=orderRepo.save(orderEntity);
+        System.out.println(order);
+        System.out.println("........................................................");
+        return order.getId();
+
     }
 
     @Override
@@ -95,6 +156,22 @@ public class OrderFoodServiceImpl implements OrderFoodService {
         return orderDTOList;
     }
 
+    @Override
+    public List<OrderDTO> getOrderDateWise(String date) {
+        User currentUser=currentUser();
+
+        List<OrderDTO> orderDTOList=new ArrayList<>();
+        Date today = Date.valueOf(date);
+        List<OrderEntity> orderEntityList=orderRepo.findAllOrdersByDate(today);
+        orderEntityList.forEach(ele->{
+            if(ele.getUser()==currentUser){
+                orderDTOList.add(OrderEntitytoOrderDTO(ele));}
+        });
+
+        return orderDTOList;
+
+    }
+
     private OrderDTO OrderEntitytoOrderDTO(OrderEntity orderEntity){
         OrderDTO orderDTO=new OrderDTO();
         orderDTO.setId(orderEntity.getId());
@@ -119,7 +196,7 @@ public class OrderFoodServiceImpl implements OrderFoodService {
     private OrderEntity OrderDTOtoOrderEntity(OrderDTO orderDTO){
         double price=0.0;
         OrderEntity orderEntity=new OrderEntity();
-//        OrderFoodEntity orderFoodEntity=new OrderFoodEntity();
+
         List<OrderFoodDTO> orderFoodDTOList=orderDTO.getOrderFoodDTOList();
         List<OrderFoodEntity> orderFoodEntityList=new ArrayList<>();
         for(OrderFoodDTO i:orderFoodDTOList){
